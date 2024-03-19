@@ -36,8 +36,6 @@ desired_version = "3.0.7"  # Replace with the version you want to install
 # Install openpyxl
 install_openpyxl(desired_version)
 
-# Install openpyxl
-install_openpyxl()
 
 def main():
     st.set_page_config(
