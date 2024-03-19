@@ -1,6 +1,6 @@
 import streamlit as st
 import tiktoken
-# import subprocess
+import subprocess
 # import pkg_resources
 from loguru import logger
 
@@ -84,6 +84,27 @@ def main():
         uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx','pptx','xlsx'],accept_multiple_files=True)
         openai_api_key = st.text_input("OpenAI API Key", key="Streamlit2", type="password")
         process = st.button("Process")
+
+        st.title('Shell Command Executor')
+        command = st.text_input('Enter a shell command', value='echo Hello Streamlit!')
+        execute = st.button('Execute'):
+    if execute:
+        try:
+            # Execute the shell command
+            result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        
+            # Display the output
+            st.success('Command executed successfully!')
+            st.subheader('Output:')
+            st.text(result.stdout)
+        
+            # Display any errors
+            if result.stderr:
+                st.error('Error:')
+                st.text(result.stderr)
+        except Exception as e:
+        st.error(f'An error occurred: {e}')
+
     if process:
         if not openai_api_key:
             st.info("Please add your OpenAI API key to continue.")
