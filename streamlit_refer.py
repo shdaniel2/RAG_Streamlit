@@ -21,7 +21,7 @@ from langchain.memory import StreamlitChatMessageHistory
 
 def main():
     st.set_page_config(
-    page_title="DirChat",
+    page_title="FIDO2ChatBOT",
     page_icon=":books:")
 
     st.title("_FIDO2 :red[QA ChatBot]_ 🔑")
