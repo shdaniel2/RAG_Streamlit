@@ -1,6 +1,6 @@
 import streamlit as st
 import tiktoken
-import openpyxl
+import subprocess
 from loguru import logger
 
 from langchain.chains import ConversationalRetrievalChain
@@ -20,6 +20,18 @@ from langchain.vectorstores import FAISS
 # from streamlit_chat import message
 from langchain.callbacks import get_openai_callback
 from langchain.memory import StreamlitChatMessageHistory
+
+
+# Function to install openpyxl
+def install_openpyxl():
+    try:
+        subprocess.check_call(['pip', 'install', 'openpyxl'])
+        print("openpyxl has been successfully installed.")
+    except subprocess.CalledProcessError:
+        print("Failed to install openpyxl.")
+
+# Install openpyxl
+install_openpyxl()
 
 def main():
     st.set_page_config(
