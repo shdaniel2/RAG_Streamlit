@@ -1,5 +1,6 @@
 import streamlit as st
 import tiktoken
+import openpyxl
 from loguru import logger
 
 from langchain.chains import ConversationalRetrievalChain
