@@ -113,6 +113,9 @@ def get_text(docs):
         elif '.pptx' in doc.name:
             loader = UnstructuredPowerPointLoader(file_name)
             documents = loader.load_and_split()
+        elif '.pptx' in doc.name:
+            loader = UnstructuredExcelLoader(file_name)
+            documents = loader.load_and_split()
 
         doc_list.extend(documents)
     return doc_list
