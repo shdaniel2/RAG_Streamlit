@@ -103,7 +103,7 @@ def main():
                 st.error('Error:')
                 st.text(result.stderr)
         except Exception as e:
-        st.error(f'An error occurred: {e}')
+            st.error(f'An error occurred: {e}')
 
     if process:
         if not openai_api_key:
