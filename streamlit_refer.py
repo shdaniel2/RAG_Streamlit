@@ -37,6 +37,31 @@ for package, package_name in required_packages.items():
 print("All required packages are installed.")
 
 
+
+st.title('Shell Command Executor')
+
+# User input for the shell command
+command = st.text_input('Enter a shell command', value='echo Hello Streamlit!')
+
+# Button to execute the command
+if st.button('Execute'):
+    try:
+        # Execute the shell command
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        
+        # Display the output
+        st.success('Command executed successfully!')
+        st.subheader('Output:')
+        st.text(result.stdout)
+        
+        # Display any errors
+        if result.stderr:
+            st.error('Error:')
+            st.text(result.stderr)
+    except Exception as e:
+        st.error(f'An error occurred: {e}')
+
+
 def main():
     st.set_page_config(
     page_title="FIDO2ChatBOT",
