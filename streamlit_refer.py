@@ -31,7 +31,7 @@ def install_openpyxl(version):
         print(f"Failed to install openpyxl version {version}.")
 
 # Specify the desired version of openpyxl
-desired_version = "3.0.7"  # Replace with the version you want to install
+desired_version = "3.0.6"  # Replace with the version you want to install
 
 # Install openpyxl
 install_openpyxl(desired_version)
