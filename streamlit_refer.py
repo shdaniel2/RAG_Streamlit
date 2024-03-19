@@ -1,7 +1,7 @@
 import streamlit as st
 import tiktoken
-import subprocess
-import pkg_resources
+# import subprocess
+# import pkg_resources
 from loguru import logger
 
 from langchain.chains import ConversationalRetrievalChain
@@ -23,43 +23,45 @@ from langchain.callbacks import get_openai_callback
 from langchain.memory import StreamlitChatMessageHistory
 
 
-required_packages = {
-    'pandas': 'pandas',
-    'openpyxl': 'openpyxl'
-}
+# # Function to install packages
+# def install_packages(*packages):
+#     for package in packages:
+#         try:
+#             subprocess.check_call(['pip', 'install', package])
+#             print(f"{package} has been successfully installed.")
+#         except subprocess.CalledProcessError:
+#             print(f"Failed to install {package}.")
 
-installed_packages = {pkg.key for pkg in pkg_resources.working_set}
+# # List of packages to install
+# packages_to_install = ['pandas', 'openpyxl']
 
-for package, package_name in required_packages.items():
-    if package not in installed_packages:
-        subprocess.check_call([f"pip", "install", package_name])
-
-print("All required packages are installed.")
+# # Install packages
+# install_packages(*packages_to_install)
 
 
 
-st.title('Shell Command Executor')
+# st.title('Shell Command Executor')
 
-# User input for the shell command
-command = st.text_input('Enter a shell command', value='echo Hello Streamlit!')
+# # User input for the shell command
+# command = st.text_input('Enter a shell command', value='echo Hello Streamlit!')
 
-# Button to execute the command
-if st.button('Execute'):
-    try:
-        # Execute the shell command
-        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+# # Button to execute the command
+# if st.button('Execute'):
+#     try:
+#         # Execute the shell command
+#         result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         
-        # Display the output
-        st.success('Command executed successfully!')
-        st.subheader('Output:')
-        st.text(result.stdout)
+#         # Display the output
+#         st.success('Command executed successfully!')
+#         st.subheader('Output:')
+#         st.text(result.stdout)
         
-        # Display any errors
-        if result.stderr:
-            st.error('Error:')
-            st.text(result.stderr)
-    except Exception as e:
-        st.error(f'An error occurred: {e}')
+#         # Display any errors
+#         if result.stderr:
+#             st.error('Error:')
+#             st.text(result.stderr)
+#     except Exception as e:
+#         st.error(f'An error occurred: {e}')
 
 
 def main():
