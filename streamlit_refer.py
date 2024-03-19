@@ -87,7 +87,7 @@ def main():
 
         st.title('Shell Command Executor')
         command = st.text_input('Enter a shell command', value='echo Hello Streamlit!')
-        execute = st.button('Execute'):
+        execute = st.button('Execute')
     if execute:
         try:
             # Execute the shell command
