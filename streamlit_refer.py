@@ -23,12 +23,18 @@ from langchain.memory import StreamlitChatMessageHistory
 
 
 # Function to install openpyxl
-def install_openpyxl():
+def install_openpyxl(version):
     try:
-        subprocess.check_call(['pip', 'install', 'openpyxl'])
-        print("openpyxl has been successfully installed.")
+        subprocess.check_call(['pip', 'install', f'openpyxl=={version}'])
+        print(f"openpyxl version {version} has been successfully installed.")
     except subprocess.CalledProcessError:
-        print("Failed to install openpyxl.")
+        print(f"Failed to install openpyxl version {version}.")
+
+# Specify the desired version of openpyxl
+desired_version = "3.0.7"  # Replace with the version you want to install
+
+# Install openpyxl
+install_openpyxl(desired_version)
 
 # Install openpyxl
 install_openpyxl()
