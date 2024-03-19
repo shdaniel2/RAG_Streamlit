@@ -1,6 +1,7 @@
 import streamlit as st
 import tiktoken
 import subprocess
+import pkg_resources
 from loguru import logger
 
 from langchain.chains import ConversationalRetrievalChain
@@ -22,19 +23,18 @@ from langchain.callbacks import get_openai_callback
 from langchain.memory import StreamlitChatMessageHistory
 
 
-# Function to install openpyxl
-def install_openpyxl(version):
-    try:
-        subprocess.check_call(['pip', 'install', f'openpyxl=={version}'])
-        print(f"openpyxl version {version} has been successfully installed.")
-    except subprocess.CalledProcessError:
-        print(f"Failed to install openpyxl version {version}.")
+required_packages = {
+    'pandas': 'pandas',
+    'openpyxl': 'openpyxl'
+}
 
-# Specify the desired version of openpyxl
-desired_version = "3.0.6"  # Replace with the version you want to install
+installed_packages = {pkg.key for pkg in pkg_resources.working_set}
 
-# Install openpyxl
-install_openpyxl(desired_version)
+for package, package_name in required_packages.items():
+    if package not in installed_packages:
+        subprocess.check_call([f"pip", "install", package_name])
+
+print("All required packages are installed.")
 
 
 def main():
