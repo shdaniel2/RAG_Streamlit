@@ -118,3 +118,4 @@ XlsxWriter==3.2.0
 yarl==1.9.4
 pandas
 openpyxl
+langchain_google_genai
