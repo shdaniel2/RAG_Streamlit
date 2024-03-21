@@ -23,7 +23,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain_community.vectorstores import FAISS
 
 # from streamlit_chat import message
-#pfrom langchain.callbacks import get_openai_callback
+from langchain.callbacks import get_openai_callback
 from langchain.memory import StreamlitChatMessageHistory
 
 
