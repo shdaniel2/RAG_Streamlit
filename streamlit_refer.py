@@ -86,7 +86,7 @@ def main():
 
     with st.sidebar:
         uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx','pptx','xlsx'],accept_multiple_files=True)
-        google_api_key = st.text_input("Google API Key", key="Streamlit2", type="password")
+        google_api_key = st.text_input("Google API Key", type="password")
         process = st.button("Process")
 
         st.title('Shell Command Executor')
