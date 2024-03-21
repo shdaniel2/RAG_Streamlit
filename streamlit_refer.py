@@ -210,7 +210,7 @@ def get_vectorstore(text_chunks):
     return vectordb
 
 def get_conversation_chain(vetorestore,google_api_key):
-    llm = ChatGoogleGenerativeAI(google_api_key=google_api_key, model = 'gemini-pro',temperature=0)
+    llm = ChatGoogleGenerativeAI(google_api_key=google_api_key, model='gemini-pro', temperature=0, convert_system_message_to_human=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm, 
             chain_type="stuff", 
